@@ -6,6 +6,7 @@ def main(args):
     audstems = ''.join([str(a) for a in args.files])[1:-1].split(',')
     with open(os.path.join(args.folder, args.filename), 'r') as f:
         data = f.read()
+    print(data)
     data = data.split('\n')
     data = [d.split(',') for d in data if len(d)>0]
     mismatch = np.array([d for d in data if d[1] == '2'][:args.num_mismatch])[:, 0].tolist()
