@@ -3,8 +3,8 @@ import argparse
 import numpy as np
 
 def main(args):
-    print(''.join(args.files))
-    audstems = [int(item) for item in args.files.split(',')]
+    audstems = ''.join(args.files)[1:-1]
+    audstems = [int(item) for item in audstems.split(',')]
     with open(os.path.join(args.folder, args.filename), 'r') as f:
         data = f.read()
     data = data.split('\n')
