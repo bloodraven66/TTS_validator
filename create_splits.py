@@ -5,13 +5,11 @@ import numpy as np
 def main(args):
     audstems = ''.join([str(a) for a in args.files])[1:-1].split(',')
     if args.drive:
-        print('drive On')
         with open(os.path.join('/content/drive/MyDrive/TTS_eval/', args.folder, args.filename), 'r') as f:
             data = f.read()
     else:
         with open(os.path.join(args.folder, args.filename), 'r') as f:
             data = f.read()
-    print(data)
     data = data.split('\n')
     data = [d.split(',') for d in data if len(d)>0]
     mismatch = np.array([d for d in data if d[1] == '2'][:args.num_mismatch])[:, 0].tolist()
