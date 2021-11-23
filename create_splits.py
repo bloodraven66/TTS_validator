@@ -4,7 +4,7 @@ import numpy as np
 
 def main(args):
     
-    with open(os.path.join(args.foldername, args.filename), 'r') as f:
+    with open(os.path.join(args.folder, args.filename), 'r') as f:
         data = f.read()
     data = data.split('\n')
     data = [d.split(',') for d in data if len(d)>0]
@@ -17,7 +17,7 @@ def main(args):
     splits = np.array_split(remaining_ids, args.num_splits)
     splits = [np.append(split, mismatch+correct+common_ids) for split in splits]
     for idx, split in enumerate(splits):
-        with open(foldername+str(idx)+'.txt', 'w') as f:
+        with open(args.folder+str(idx)+'.txt', 'w') as f:
             f.writelines([s+'\n' for s in split])
 
 if __name__ == '__main__':
