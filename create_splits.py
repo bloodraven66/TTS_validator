@@ -3,7 +3,7 @@ import argparse
 import numpy as np
 
 def main(args):
-    print(args.files)
+    print(''.join(args.files))
     audstems = [int(item) for item in args.files.split(',')]
     with open(os.path.join(args.folder, args.filename), 'r') as f:
         data = f.read()
