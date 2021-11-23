@@ -4,8 +4,12 @@ import numpy as np
 
 def main(args):
     audstems = ''.join([str(a) for a in args.files])[1:-1].split(',')
-    with open(os.path.join(args.folder, args.filename), 'r') as f:
-        data = f.read()
+    if args.drive:
+        with open(os.path.join('/content/drive/MyDrive/TTS_eval/', args.folder, args.filename), 'r') as f:
+            data = f.read()
+    else:
+        with open(os.path.join(args.folder, args.filename), 'r') as f:
+            data = f.read()
     print(data)
     data = data.split('\n')
     data = [d.split(',') for d in data if len(d)>0]
@@ -29,6 +33,7 @@ if __name__ == '__main__':
   parser.add_argument('--num_correct', default=20)
   parser.add_argument('--filename', default='verified_output.csv')
   parser.add_argument('--files', required=True, type=str, nargs='+')
+  parser.add_argument('--drive', default=False)
   parser.add_argument('--num_splits', default=3, help='number of validators')
   args = parser.parse_args()
   main(args)
