@@ -28,4 +28,4 @@ if __name__ == '__main__':
   parser.add_argument('--filename', default='verified_output.csv')
   parser.add_argument('--num_splits', default=3, help='number of validators')
   args = parser.parse_args()
-  main()
+  main(args)
