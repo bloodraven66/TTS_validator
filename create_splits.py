@@ -30,7 +30,7 @@ if __name__ == '__main__':
   parser.add_argument('--num_common', default=20)
   parser.add_argument('--num_correct', default=20)
   parser.add_argument('--filename', default='verified_output.csv')
-  parser.add_argument('--files', required=True, type=str)
+  parser.add_argument('--files', required=True, type=str, nargs='+')
   parser.add_argument('--num_splits', default=3, help='number of validators')
   args = parser.parse_args()
   main(args)
