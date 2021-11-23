@@ -15,11 +15,20 @@ def main(args):
     mismatch = np.array([d for d in data if d[1] == '2'][:args.num_mismatch])[:, 0].tolist()
     correct = np.array([d for d in data if d[1] == '1'][:args.num_correct])[:, 0].tolist()
     completed_ids = np.array(data)[:, 0]
-    remaining_ids = [a for a in audstems if a not in completed_ids][:50]
+    print(len(completed_ids))
+    print(len(correct))
+    print(len(mismatch))
+    remaining_ids = [a for a in audstems if a not in completed_ids]
     common_ids = remaining_ids[:args.num_common]
+    print(len(remaining_ids))
+    print(len(common_ids))
+    
     remaining_ids = np.array(remaining_ids[args.num_common:])
+    print(len(remaining_ids))
     splits = np.array_split(remaining_ids, args.num_splits)
+    print(len(splits[0))
     splits = [np.append(split, mismatch+correct+common_ids) for split in splits]
+    print(len(splits[0))
     for idx, split in enumerate(splits):
         with open(args.folder+str(idx)+'.txt', 'w') as f:
             f.writelines([s+'\n' for s in split])
