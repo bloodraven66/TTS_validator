@@ -5,6 +5,7 @@ import numpy as np
 def main(args):
     audstems = ''.join([str(a) for a in args.files])[1:-1].split(',')
     if args.drive:
+        print('drive On')
         with open(os.path.join('/content/drive/MyDrive/TTS_eval/', args.folder, args.filename), 'r') as f:
             data = f.read()
     else:
