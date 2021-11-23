@@ -15,6 +15,9 @@ def main(args):
     common_ids = remaining_ids[:args.num_common]
     remaining_ids = np.array(remaining_ids[args.num_common:])
     splits = np.array_split(remaining_ids, args.num_splits)
+    print(mismatch)
+    print(correct)
+    print(common_ids)
     splits = [np.append(split, mismatch+correct+common_ids) for split in splits]
     for idx, split in enumerate(splits):
         with open(args.folder+str(idx)+'.txt', 'w') as f:
